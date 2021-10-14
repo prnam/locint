@@ -1,0 +1,4 @@
+requests==2.26.0
+httpx==0.20.0
+flake8==4.0.1
+autopep8==1.5.7

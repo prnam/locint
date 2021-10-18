@@ -44,7 +44,7 @@
 
 - User enters correct Latitude and Longitude
 - Program verifies and proceeds further by calling get_data from openweatherapi's historical module with necessary inputs such as lat, lon, dates ( past 3 days). If verifyication is failed then user is gets hint of wrong geo info and gracefully exits.
-- get_data method process this information asynchronously and returns pressure and datetime info, if each endpoint return status is 200. If not helpful hint will provided to user.
+- get_data method process this information asynchronously and returns pressure and datetime info, if each endpoint return status is 200. If not helpful hint will provided to user. Uses make_call to perform async call to url or urls.
 - get_data could have been in same file, however it was kep seperate for ease of adding new methods and call easily and share library / module if when required.
 - Whole program is wrapped with try-catch to gracefully catch the edge cases.
 

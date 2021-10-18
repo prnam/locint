@@ -8,20 +8,19 @@ DAY_IN_SECONDS = 86400
 
 
 def main():
+    """ Takes geo inputs to get 3 days historical weather data """
     try:
         from openweatherapi import historical
         print("----- INPUT -----")
         lat = float(input("Enter Latitude value [-90 to 90]: "))
         lon = float(input("Enter Longitude value [-180 to 180]: "))
-
         if ((lat >= -90.0) and (lat <= 90.0)) and ((lon >= -180.0) and (lon <= 180.0)):  # noqa
-            dtnow = int(time.time())
-            key = input(
-                "I have configured my key in config file [press any key to continue OR type 'exit' to quit]: ")  # noqa
-            if(key != "exit"):
-                dates = [dtnow, dtnow-DAY_IN_SECONDS, dtnow-(DAY_IN_SECONDS*2)]
+            dt_now = int(time.time())
+            key = input("I have configured my key in config file [press any key to continue OR type 'exit' to quit]: ")  # noqa
+            if key != "exit":
+                dates = [dt_now, dt_now-DAY_IN_SECONDS, dt_now-(DAY_IN_SECONDS*2)]  # noqa
                 function_start_time = time.time()
-                asyncio.run(historical.get_data(lat, lon, dates))
+                asyncio.run(historical.get_three_days_data(str(lat), str(lon), dates))
                 print("\nFunction execution time is %s seconds." %
                       (time.time() - function_start_time))
         else:

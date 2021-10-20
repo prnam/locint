@@ -2,11 +2,6 @@ import asyncio
 import httpx
 import datetime
 
-WARN = "Something went wrong!!!"
-MESSAGE = "Message received:"
-URL = "https://api.openweathermap.org"
-PATH = "/data/2.5/onecall/timemachine"
-
 
 async def make_call(client, url):
     """Makes async calls to url or set of urls and returns the data"""
@@ -22,8 +17,8 @@ async def get_three_days_data(lat: str, lon: str, dates: list):
         tasks = []
         async with httpx.AsyncClient() as client:
             for dt in dates:
-                query = "?lat={0}&lon={1}&dt={2}&appid={3}".format(lat, lon, dt, config.api_key)  # noqa
-                url = "{0}{1}{2}".format(URL, PATH, query)
+                query = "?lat={0}&lon={1}&dt={2}&appid={3}".format(lat, lon, dt, config.API_KEY)  # noqa
+                url = "{0}{1}{2}".format(config.URL, config.PATH, query)
                 tasks.append(asyncio.ensure_future(make_call(client, url)))
 
             responses = await asyncio.gather(*tasks)
@@ -37,10 +32,10 @@ async def get_three_days_data(lat: str, lon: str, dates: list):
                     print("{0} UTC | Pressure -> {1}".format(human_time, pressure))  # noqa
                 else:
                     data = response.json()
-                    print("{0}\nMore Info:-".format(WARN))
+                    print("{0}\nMore Info:-".format(config.WARN))
                     print(" Status Code: {0}".format(data['cod']))
-                    print(" {0} {1}".format(MESSAGE, data['message']))
+                    print(" {0} {1}".format(config.MESSAGE, data['message']))
                     exit(1)
 
     except Exception as ex:
-        print("{0} {1} {2}".format(WARN, MESSAGE, ex))
+        print("{0} {1} {2}".format(config.WARN, config.MESSAGE, ex))

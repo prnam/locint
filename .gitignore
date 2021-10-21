@@ -116,3 +116,6 @@ dmypy.json
 
 # PyCharm folders and files
 .idea
+
+# VS Code
+.devcontainer

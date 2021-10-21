@@ -25,7 +25,7 @@ async def main():
                 LAT, LON, date, config.API_KEY
             )  # noqa
             url = "{0}{1}{2}".format(config.URL, config.PATH, query)
-            response = await client.get(url)
+            response = await client.post(url)
 
             data = response.json()["hourly"][4]
             pressure = data["pressure"]

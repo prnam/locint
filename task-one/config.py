@@ -1,3 +1,4 @@
+"""All configuration key value pairs"""
 API_KEY = ""
 WARN = "Something went wrong!!!"
 MESSAGE = "Message received:"

@@ -1,4 +1,4 @@
-""" Sync API calls """
+""" Sync calls using httpx package"""
 import datetime
 import time
 import httpx

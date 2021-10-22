@@ -1,4 +1,4 @@
-""" Async API calls"""
+""" Async calls using httpx package"""
 import asyncio
 import time
 import datetime

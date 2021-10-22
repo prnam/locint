@@ -1,3 +1,4 @@
+"""Sync calls using requests package"""
 import datetime
 import requests
 import time
@@ -14,6 +15,7 @@ dates = [
 ]  # noqa
 LAT = 15.0
 LON = 75.0
+
 
 for date in dates:
     query = "?lat={0}&lon={1}&dt={2}&appid={3}".format(

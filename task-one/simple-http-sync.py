@@ -1,3 +1,4 @@
+"""Sync calls using http package"""
 import datetime
 import json
 import http.client
